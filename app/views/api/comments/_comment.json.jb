@@ -1,0 +1,16 @@
+json = {
+  id: comment.id,
+  value: comment.value,
+  parent_id: comment.parent_id,
+  thread_id: comment.thread_id,
+  created_at: comment.created_at,
+  updated_at: comment.updated_at,
+}
+if comment.children
+  children_array = []
+  comment.children.map do |child|
+    children_array.append(render partial: "comment.json.jb", locals: {comment: child})
+  end
+  json[:children] = children_array
+end
+json
