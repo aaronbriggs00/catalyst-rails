@@ -1,2 +1,1 @@
-parent_json = render partial: "comment.json.jb", locals: {comment: @comment}
-parent_json
+render partial: "comment.json.jb", locals: {comment: @comment}

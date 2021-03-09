@@ -1,9 +1,0 @@
-json = {
-  id: comment.id,
-  value: comment.value,
-  parent_id: comment.parent_id,
-  thread_id: comment.thread_id,
-  created_at: comment.created_at,
-  updated_at: comment.updated_at
-}
-json

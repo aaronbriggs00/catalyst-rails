@@ -11,7 +11,7 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(
       value: params[:value],
       parent_id: params[:parent_id],
-      thread_id: params[:thread_id]
+      post_id: params[:post_id]
     )
     if @comment.save
       render "show.json.jb", status: :created
@@ -23,14 +23,15 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.value = params[:value] || @comment.value
     if @comment.save
-      render "show.json.jb", status: :created
+      render "show.json.jb", status: 200
     else
       render json: { errors: @comment.errors.full_messages }, status: :bad_request
     end
   end
   def delete
     comment = Comment.find(params[:id])
-    comment.destroy
-    render json: {message: "comment destroyed"}
+    comment.value = nil
+    comment.save
+    render json: {message: "comment destroyed"}, status: 204
   end
 end
