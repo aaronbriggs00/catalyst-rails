@@ -7,4 +7,5 @@ json = {
   image_url: post.image_url,
   created_at: post.created_at,
   updated_at: post.updated_at,
+  replies: post.comments.length
 }
