@@ -1,0 +1,5 @@
+{
+  id: board.id,
+  title: board.title,
+  post_count: board.posts.count(),
+}

@@ -19,5 +19,9 @@ Rails.application.routes.draw do
     post "/posts" => "posts#create"
     patch "/posts/:id" => "posts#update"
     delete "/posts/:id" => "posts#delete"
+
+    # boards
+    get "/boards" => "boards#index"
+    get "/boards/:title" => "boards#show"
   end
 end

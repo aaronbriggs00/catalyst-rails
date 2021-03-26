@@ -1,4 +1,5 @@
 class Api::CommentsController < ApplicationController
+  before_action :authenticate_user, except: [:show]
   def index
     @comments = Comment.all
     render "index.json.jb"
@@ -11,7 +12,8 @@ class Api::CommentsController < ApplicationController
     @comment = Comment.new(
       value: params[:value],
       parent_id: params[:parent_id],
-      post_id: params[:post_id]
+      post_id: params[:post_id],
+      user_id: current_user.id
     )
     if @comment.save
       render "show.json.jb", status: :created
