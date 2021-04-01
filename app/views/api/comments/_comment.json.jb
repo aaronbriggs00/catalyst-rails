@@ -3,6 +3,7 @@ json = {
   value: comment.value,
   parent_id: comment.parent_id,
   post_id: comment.post_id,
+  author: comment.user.name,
   created_at: comment.created_at,
   updated_at: comment.updated_at,
 }

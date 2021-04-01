@@ -3,8 +3,14 @@ Rails.application.routes.draw do
   # get "/photos" => "photos#index"
 
   namespace :api do
-    post "/users" => "users#create"
     post "/sessions" => "sessions#create"
+
+    #users
+    get "/users" => "users#index"
+    get "/users/:id" => "users#show"
+    post "/users" => "users#create"
+    patch "/users/:id" => "users#update"
+    delete "/users/:id" => "users#delete"
 
     # comments
     get "/comments" => "comments#index"
