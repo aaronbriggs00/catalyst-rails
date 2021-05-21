@@ -4,6 +4,15 @@ class Api::PostsController < ApplicationController
     @posts = Post.all
     render "index.json.jb"
   end
+  def subscribed_index
+    board_ids = current_user.boards.map do |board|
+      board.id
+    end
+    #NOT SANITIZED?
+    @posts = Post.where(board_id: board_ids)
+    #NOT SANITIZED?
+    render "index.json.jb"
+  end
   def show
     @post = Post.find(params[:id])
     render "show.json.jb"

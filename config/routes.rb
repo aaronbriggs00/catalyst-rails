@@ -21,6 +21,7 @@ Rails.application.routes.draw do
 
     # posts
     get "/posts" => "posts#index"
+    get "/posts/subscription" => "posts#subscribed_index"
     get "/posts/:id" => "posts#show"
     post "/posts" => "posts#create"
     patch "/posts/:id" => "posts#update"
@@ -29,5 +30,13 @@ Rails.application.routes.draw do
     # boards
     get "/boards" => "boards#index"
     get "/boards/:title" => "boards#show"
+
+    #subscriptions
+    get "/subscriptions" => "subscriptions#index"
+    post "/subscriptions" => "subscriptions#create"
+    delete "/subscriptions/:id" => "subscriptions#delete"
+
+    # votes
+    post "/votes" => "votes#create"
   end
 end

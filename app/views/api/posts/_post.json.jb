@@ -3,10 +3,12 @@ json = {
   title: post.title,
   board_id: post.board_id,
   user_id: post.user_id,
+  author: post.user.name,
   text: post.text,
   hyperlink: post.hyperlink,
   image_url: post.image_url,
   created_at: post.created_at,
   updated_at: post.updated_at,
-  replies: post.comments.length
+  replies: post.comments.length,
+  score: post.score
 }

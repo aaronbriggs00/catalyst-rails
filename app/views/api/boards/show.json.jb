@@ -2,4 +2,10 @@ json = render partial: "board.json.jb", locals: {board: @board}
 json[:posts] = @board.posts.map do |post|
   render partial: "api/posts/post.json.jb", locals: {post: post}
 end
+
+if current_user && current_user.boards.find {|board_hash| board_hash[:id] == @board.id}
+  json[:subscribed] = true
+else
+  json[:subscribed] = false
+end
 json

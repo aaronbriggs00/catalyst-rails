@@ -4,4 +4,7 @@ class User < ApplicationRecord
 
   has_many :posts
   has_many :comments
+  has_many :votes
+  has_many :subscriptions
+  has_many :boards, through: :subscriptions
 end

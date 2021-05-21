@@ -1,9 +1,11 @@
 class Api::UsersController < ApplicationController
   def index
-    render json: {message: "index"}
+    @users = User.all
+    render "index.json.jb"
   end
-  def show
-    render json: {message: "show"}
+  def show  
+    @user = User.find(params[:id])
+    render "show.json.jb"
   end
   def create
     user = User.new(
@@ -19,7 +21,13 @@ class Api::UsersController < ApplicationController
     end
   end
   def update
-    render json: {message: "update"}
+    @user = User.find(params[:id])
+    @user.image_url = params[:image_url] || @user.image_url
+    if @user.save
+      render "show.json.jb"
+    else
+      render json: { errors: @user.errors.full_messages }, status: :bad_request
+    end
   end
   def delete
     render json: {message: "delete"}
